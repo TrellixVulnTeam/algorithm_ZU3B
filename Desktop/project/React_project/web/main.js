@@ -1,5 +1,5 @@
 
-let left = null ,right = null ,oper = null;
+let left = null ,right = null ,oper = null, res = false, resValue = null;
 
 
 function save(){
@@ -23,23 +23,22 @@ function save(){
     inp.value = value
 
     if(res) {
-        let res = "";
         switch(oper){
             case "+" :
-                res = parseInt(left) + parseInt(right) 
+                resValue = parseInt(left) + parseInt(right) 
                 break;
             case "-" :
-                res = parseInt(left) - parseInt(right) 
+                resValue = parseInt(left) - parseInt(right) 
                 break;
             case "*" :
-                res = parseInt(left) * parseInt(right) 
+                resValue = parseInt(left) * parseInt(right) 
                 break;
             case "/" :
-                res = parseInt(left) / parseInt(right) 
+                resValue = parseInt(left) / parseInt(right) 
                 break;
         }
 
-        value += "= " + res;
+        value += "= " + resValue;
         inp.value = value
     }
 }
@@ -78,7 +77,31 @@ function inputOper(op) {
     }
     if(left === "-"  && op === "-"){
         return;
-    }  
+    }
+    if(op === "-" && oper !== null && right === null){
+        right = "-"
+        save()
+        return;
+    }
     oper = op;  
+    save();  
+}
+
+
+function inputEqu() {
+    if(left === null || right === null || !oper )
+    return;
+
+    if(res){
+        left = resValue
+        right = null
+        resValue = null
+        oper = null
+        res = false
+    }
+    else{
+        res = true
+
+    }
     save();  
 }
