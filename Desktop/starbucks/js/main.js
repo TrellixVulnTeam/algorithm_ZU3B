@@ -77,6 +77,7 @@ new Swiper('.promotion .swiper-container', {
         delay: 5000
     },
     pagination: {
+        el:'.promotion .swiper-pagination',
         clickable: true //사용자의 페이지 번호 요소 제어 가능 여부
     },
     navigation: {
@@ -84,12 +85,17 @@ new Swiper('.promotion .swiper-container', {
         nextEl: '.promotion .swiper-next',
     }
 });
-// new Swiper('.awards .swiper-container', {
-//     autoplay: true,
-//     loop: true,
-//     spaceBetween: 30,
-//     slidesPerView: 5
-// });
+new Swiper('.awards .swiper-container', {
+    autoplay: true,
+    loop: true,
+    spaceBetween: 30,
+    slidesPerView: 5,
+    navigation: {
+        prevEl:'.awrds .swiper-prev',
+        nextEl:'.awrds .swiper-next'
+    }
+});
+
 
 
 const promotionEl = document.querySelector('.promotion');
